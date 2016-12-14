@@ -1,5 +1,6 @@
 package com.pringstudio.caribuku.buku;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.pringstudio.caribuku.App;
 import com.pringstudio.caribuku.R;
@@ -35,7 +37,10 @@ public class BukuActivity extends AppCompatActivity implements View.OnClickListe
     List<Book> bookList = new ArrayList<>();
 
     // Presenter
-    BukuPresenter mPresenter;
+    BukuContract.Presenter mPresenter;
+
+    // Progressbar
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,28 @@ public class BukuActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public void showLoading() {
+        mButton.setEnabled(false);
+        mEditText.setEnabled(false);
+
+        dialog.setMessage("Mencari...");
+        dialog.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        mButton.setEnabled(true);
+        mEditText.setEnabled(true);
+
+        dialog.dismiss();
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected void onDestroy() {
         mPresenter.unbind();
         super.onDestroy();
@@ -86,6 +113,10 @@ public class BukuActivity extends AppCompatActivity implements View.OnClickListe
 
         // Bind View
         mPresenter.bind(this);
+
+        // Dialog
+        dialog = new ProgressDialog(this);
+        dialog.setCancelable(false);
     }
 
     @Inject

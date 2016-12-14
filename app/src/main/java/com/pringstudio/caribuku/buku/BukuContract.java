@@ -20,6 +20,9 @@ public interface BukuContract {
     }
     interface View {
         void updateBookList(List<Book> books);
+        void showLoading();
+        void hideLoading();
+        void showToast(String message);
     }
     interface Presenter {
         void bind(View view);

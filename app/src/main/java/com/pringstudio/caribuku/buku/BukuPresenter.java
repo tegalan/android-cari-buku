@@ -17,8 +17,8 @@ import retrofit2.Response;
 
 public class BukuPresenter implements BukuContract.Presenter {
 
-    BukuContract.Model  model;
-    BukuContract.View   view;
+    BukuContract.Model model;
+    BukuContract.View view;
 
     @Inject
     public BukuPresenter(BukuContract.Model model) {
@@ -37,22 +37,34 @@ public class BukuPresenter implements BukuContract.Presenter {
 
     @Override
     public void performSearch(String keyword) {
+
+        if(view != null)
+            view.showLoading();
+
         model.search(keyword)
                 .enqueue(new Callback<BookResult>() {
                     @Override
                     public void onResponse(Call<BookResult> call, Response<BookResult> response) {
+                        if (view != null) {
+                            if (response.isSuccessful() && response.body() != null) {
 
-                        if(response.isSuccessful()){
-                            if(view != null){
                                 view.updateBookList(response.body().getBooks());
+                            }else{
+                                view.showToast("Pencarian tidak ditemukan");
                             }
+
+                            view.hideLoading();
                         }
+
 
                     }
 
                     @Override
                     public void onFailure(Call<BookResult> call, Throwable t) {
                         t.printStackTrace();
+                        if(view != null){
+                            view.hideLoading();
+                        }
                     }
                 });
     }
