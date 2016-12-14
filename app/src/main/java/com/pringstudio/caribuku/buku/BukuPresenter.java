@@ -2,6 +2,8 @@ package com.pringstudio.caribuku.buku;
 
 import com.pringstudio.caribuku.buku.entity.BookResult;
 
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,7 +17,23 @@ import retrofit2.Response;
 
 public class BukuPresenter implements BukuContract.Presenter {
 
-    BukuContract.Model model;
+    BukuContract.Model  model;
+    BukuContract.View   view;
+
+    @Inject
+    public BukuPresenter(BukuContract.Model model) {
+        this.model = model;
+    }
+
+    @Override
+    public void bind(BukuContract.View view) {
+        this.view = view;
+    }
+
+    @Override
+    public void unbind() {
+        this.view = null;
+    }
 
     @Override
     public void performSearch(String keyword) {
@@ -24,11 +42,17 @@ public class BukuPresenter implements BukuContract.Presenter {
                     @Override
                     public void onResponse(Call<BookResult> call, Response<BookResult> response) {
 
+                        if(response.isSuccessful()){
+                            if(view != null){
+                                view.updateBookList(response.body().getBooks());
+                            }
+                        }
+
                     }
 
                     @Override
                     public void onFailure(Call<BookResult> call, Throwable t) {
-
+                        t.printStackTrace();
                     }
                 });
     }

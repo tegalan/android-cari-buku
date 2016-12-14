@@ -2,13 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="8dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/item_text_judul"
         android:text="Judul"
-        android:textSize="24sp"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView

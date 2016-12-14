@@ -61,7 +61,7 @@ public class BukuListAdapter  extends RecyclerView.Adapter<BukuListAdapter.BukuH
         public BukuHolder(View itemView) {
             super(itemView);
 
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this,itemView);
         }
 
         public void setJudul(String judul){

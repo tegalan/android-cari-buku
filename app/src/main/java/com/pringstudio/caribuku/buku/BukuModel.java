@@ -14,6 +14,7 @@ import retrofit2.Call;
  */
 
 public class BukuModel implements BukuContract.Model {
+
     @Override
     public Call<BookResult> search(String keyword) {
         BukuApiService service = ServiceGenerator.getService().create(BukuApiService.class);

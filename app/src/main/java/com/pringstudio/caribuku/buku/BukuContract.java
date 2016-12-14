@@ -22,6 +22,8 @@ public interface BukuContract {
         void updateBookList(List<Book> books);
     }
     interface Presenter {
+        void bind(View view);
+        void unbind();
         void performSearch(String keyword);
     }
 }
