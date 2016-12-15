@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pringstudio.caribuku.App;
@@ -31,6 +32,8 @@ public class BukuActivity extends AppCompatActivity implements View.OnClickListe
     Button mButton;
     @BindView(R.id.main_recycler)
     RecyclerView mMainRecycler;
+    @BindView(R.id.buku_text_notfound)
+    TextView mTextNotFound;
 
     // Book List Adapter
     BukuListAdapter bookListAdapter;
@@ -68,6 +71,9 @@ public class BukuActivity extends AppCompatActivity implements View.OnClickListe
         bookList.clear();
         bookList.addAll(books);
 
+        mTextNotFound.setVisibility(View.GONE);
+        mMainRecycler.setVisibility(View.VISIBLE);
+
         bookListAdapter.notifyDataSetChanged();
     }
 
@@ -94,13 +100,21 @@ public class BukuActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public void showNotFound(String message) {
+        mTextNotFound.setVisibility(View.VISIBLE);
+        mMainRecycler.setVisibility(View.GONE);
+
+        mTextNotFound.setText(message);
+    }
+
+    @Override
     protected void onDestroy() {
         mPresenter.unbind();
         super.onDestroy();
     }
 
     private void initView(){
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_buku);
         ButterKnife.bind(this);
 
         mButton.setOnClickListener(this);

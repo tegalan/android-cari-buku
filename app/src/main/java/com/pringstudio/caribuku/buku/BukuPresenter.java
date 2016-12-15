@@ -28,6 +28,8 @@ public class BukuPresenter implements BukuContract.Presenter {
     @Override
     public void bind(BukuContract.View view) {
         this.view = view;
+
+        view.showNotFound("Masukkan kata kunci dan klik cari");
     }
 
     @Override
@@ -46,11 +48,14 @@ public class BukuPresenter implements BukuContract.Presenter {
                     @Override
                     public void onResponse(Call<BookResult> call, Response<BookResult> response) {
                         if (view != null) {
-                            if (response.isSuccessful() && response.body() != null) {
+                            if (response.isSuccessful() && response.body().getResultCount() > 0) {
 
                                 view.updateBookList(response.body().getBooks());
+
                             }else{
-                                view.showToast("Pencarian tidak ditemukan");
+
+                                view.showNotFound("Pencarian tidak ditemukan");
+
                             }
 
                             view.hideLoading();

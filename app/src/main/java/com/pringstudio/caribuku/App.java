@@ -2,6 +2,8 @@ package com.pringstudio.caribuku;
 
 import android.app.Application;
 
+import com.pringstudio.caribuku.util.AppComponent;
+
 /**
  * Author       : sucipto
  * Created date : 12/14/16 21:42

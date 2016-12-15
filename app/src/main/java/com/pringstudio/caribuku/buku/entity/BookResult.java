@@ -13,7 +13,9 @@ import java.util.List;
 
 public class BookResult {
     @SerializedName("items")
-    List<Book> books;
+    private List<Book> books;
+    @SerializedName("totalItems")
+    private int resultCount;
 
     public List<Book> getBooks() {
         return books;
@@ -21,5 +23,13 @@ public class BookResult {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    public int getResultCount() {
+        return resultCount;
+    }
+
+    public void setResultCount(int resultCount) {
+        this.resultCount = resultCount;
     }
 }

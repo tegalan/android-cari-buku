@@ -1,4 +1,4 @@
-package com.pringstudio.caribuku;
+package com.pringstudio.caribuku.util;
 
 import com.pringstudio.caribuku.buku.BukuActivity;
 import com.pringstudio.caribuku.buku.module.BukuModule;

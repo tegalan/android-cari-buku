@@ -43,7 +43,7 @@ public class BukuListAdapter  extends RecyclerView.Adapter<BukuListAdapter.BukuH
         Book book = bookList.get(position);
 
         holder.setJudul(book.getBookDetail().getTitle());
-//        holder.setDesc(book.getBookDetail());
+        holder.setDesc("Publisher: "+book.getBookDetail().getPublisher());
     }
 
     @Override

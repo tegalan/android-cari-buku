@@ -39,4 +39,13 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/buku_text_notfound"
+        android:visibility="gone"
+        android:text="Hasil pencarian tidak ditemukan"
+        android:gravity="center"
+        android:layout_below="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

@@ -23,6 +23,7 @@ public interface BukuContract {
         void showLoading();
         void hideLoading();
         void showToast(String message);
+        void showNotFound(String message);
     }
     interface Presenter {
         void bind(View view);

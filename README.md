@@ -8,3 +8,6 @@ Project ini saya gunakan untuk belajar membuat aplikasi android dengan konsep MV
 * Android Support Library
 * ButterKnife
 * Timber Log
+
+# Todo
+- [ ] Create test
