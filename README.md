@@ -1,5 +1,5 @@
 # Cari Buku Android App
-Project ini saya gunakan untuk belajar membuat aplikasi android dengan konsep MVP (Model View Presenter)
+Project ini saya gunakan untuk belajar membuat aplikasi android dengan konsep MVP (Model View Presenter) dan Dagger 2
 
 # Library
 * Retrofit
