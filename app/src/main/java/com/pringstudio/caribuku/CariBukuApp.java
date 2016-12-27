@@ -3,6 +3,7 @@ package com.pringstudio.caribuku;
 import android.app.Application;
 
 import com.pringstudio.caribuku.util.AppComponent;
+import com.pringstudio.caribuku.util.DaggerAppComponent;
 
 /**
  * Author       : sucipto
@@ -11,14 +12,14 @@ import com.pringstudio.caribuku.util.AppComponent;
  * Website      : http://sucipto.net
  */
 
-public class App extends Application {
+public class CariBukuApp extends Application {
 
     private AppComponent appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent = DaggerAppComponent.create();
+        appComponent = DaggerAppComponent.builder().build();
     }
 
     public AppComponent getAppComponent() {

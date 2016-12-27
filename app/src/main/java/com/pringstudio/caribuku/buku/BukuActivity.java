@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.pringstudio.caribuku.App;
+import com.pringstudio.caribuku.CariBukuApp;
 import com.pringstudio.caribuku.R;
 import com.pringstudio.caribuku.buku.adapter.BukuListAdapter;
 import com.pringstudio.caribuku.buku.entity.Book;
@@ -50,7 +50,7 @@ public class BukuActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
 
-        ((App) getApplication()).getAppComponent().inject(this);
+        ((CariBukuApp) getApplication()).getAppComponent().inject(this);
 
         this.initView();
     }
