@@ -34,5 +34,5 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:recyclerview-v7:26.0.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
 }
